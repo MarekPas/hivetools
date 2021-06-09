@@ -1,1 +1,1 @@
-web: gunicorn hivetools.wsgi
+web: gunicorn hivetools.wsgi --log-file -
