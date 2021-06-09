@@ -1,0 +1,26 @@
+<center>
+<h1>Hive random comment picker</h1>
+<form class="form-inline my-2 my-lg-0" method="post" action="{% url 'comment-picker' %}">
+    {% csrf_token %}
+    <input class="form-control mr-sm-2" type="search" placeholder="permlink" aria-label="Search" name="post">
+    <input class="form-control mr-sm-2" type="search" placeholder="optional demanded words" aria-label="Search" name="demand">
+    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Get random winner</button>
+</form>
+{% if request.method == "POST" %}
+
+    {% if error %}
+        <hr>{{ error }}<hr>
+    {% else %}
+        <h2>The winner is: {{ winner.0 }}!</h2>
+        <br/>
+        Comment: {{ winner.1 }}
+        <br/>
+        <hr>
+        Other participants: {{ participants }}
+    {% endif %}
+{% else %}
+
+{% endif %}
+<br/>
+(c) sentipl
+</center>
