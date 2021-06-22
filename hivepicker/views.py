@@ -8,6 +8,7 @@ def comment_picker(request):
     if request.method == "POST":
         try:
             post = Comment(request.POST['post'])
+            # print(post.json())
         except beem.exceptions.ContentDoesNotExistsException:
             return render(request, 'picker.html', {'error': 'Post does not exist!'})
         except ValueError:
@@ -22,6 +23,6 @@ def comment_picker(request):
         participants = [author for author, body in replies]
         participants.remove(winner[0])
 
-        return render(request, 'picker.html', {'winner': winner, 'participants': participants})
+        return render(request, 'picker.html', {'winner': winner, 'participants': participants, 'post': post})
     else:
         return render(request, 'picker.html', {})
