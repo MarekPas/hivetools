@@ -8,7 +8,6 @@ def comment_picker(request):
     if request.method == "POST":
         try:
             post = Comment(request.POST['post'])
-            # print(post.json())
         except beem.exceptions.ContentDoesNotExistsException:
             return render(request, 'picker.html', {'error': 'Post does not exist!'})
         except ValueError:
