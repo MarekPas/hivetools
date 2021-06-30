@@ -16,9 +16,11 @@ Including another URLconf
 from django import urls
 from django.contrib import admin
 from django.urls import path, include
+from homepage.views import main_page
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('hivepicker.urls')),
+    path('', main_page, name="main-page"),
+    path('picker/', include('hivepicker.urls')),
 ]
