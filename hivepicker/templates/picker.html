@@ -19,14 +19,22 @@
     <h1>Hive random comment picker</h1>
     <form class="form-inline my-2 my-lg-0" method="post" action="{% url 'comment-picker' %}">
       {% csrf_token %}
-      <input class="form-control mr-sm-2" type="search" placeholder="permlink" aria-label="Search" name="post">
-      <input class="form-control mr-sm-2" type="search" placeholder="required words (optional)" aria-label="Search" name="demand">
+      <input class="form-control mr-sm-2" type="search" placeholder="Permlink" aria-label="Search" name="post">
+      <input class="form-control mr-sm-2" type="search" placeholder="Required words" aria-label="Search" name="demand">
+      <select class="form-control mr-sm-2" placeholder="No. of winners" name="winners">
+        <option selected value="1">No. of winners</option>
+        <option>1</option>
+        <option>2</option>
+        <option>3</option>
+        <option>4</option>
+        <option>5</option>
+      </select>
       <div class="form-group form-check">
         <input type="checkbox" class="form-check-input" id="exclude_bots" checked name="bots">
         <label class="form-check-label mr-sm-2" for="exclude_bots">Exclude bots</label>
       </div>
       <br/>
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Get random winner</button>
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Get a random winner</button>
   </form>
   </div>
 </div>
@@ -44,10 +52,12 @@
         <div class="card-header">
           {{ post.title }}
         </div>
+          {% for author, comment in winners %}
         <div class="card-body">
-          <h3 class="card-title">The winner is: {{ winner.0 }}!</h3>
-          <p class="card-text">{{ winner.1 |safe }}</p>
+          <h3 class="card-title">The winner is: {{ author }}!</h3>
+          <p class="card-text">{{ comment |safe }}</p>
         </div>
+          {% endfor %}
         <div class="card-footer text-muted">
           Other participants:
           {% for name in participants %}
