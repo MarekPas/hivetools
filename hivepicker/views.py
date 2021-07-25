@@ -12,9 +12,11 @@ def comment_picker(request):
         except beem.exceptions.ContentDoesNotExistsException:
             return render(request, 'picker.html', {'error': 'Post does not exist!'})
         except ValueError:
-            return render(request, 'picker.html', {'error': 'Wrong permlink format or number of winners is not an integer!'})
+            return render(request, 'picker.html', {'error': 'Wrong permlink format!'})
         except TypeError:
             return render(request, 'picker.html', {'error': 'Number of winners is not an integer!'})
+        except KeyError:
+            return render(request, 'picker.html', {'error': 'Something went wrong!'})
 
         author = post.json()['author']
         word = request.POST.get('demand')
@@ -22,7 +24,7 @@ def comment_picker(request):
         replies = post.get_all_replies()
 
         if bots == "on":
-            bot_list = ['pizzabot', 'hivebuzz', 'ecency', 'luvshares', 'beerlover', 'tipu', 'pinmapple', 'holybread']
+            bot_list = ['pizzabot', 'hivebuzz', 'ecency', 'luvshares', 'beerlover', 'tipu', 'pinmapple', 'holybread', 'risingstargame', 'wine.bot', 'actifit']
             bot_list.append(author)
             replies = [[reply.author, reply.body] for reply in replies if word.lower() in reply.body.lower() and reply.author not in bot_list]
         else:
