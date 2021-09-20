@@ -1,15 +1,14 @@
 from django.shortcuts import render
-import beem
 from beem.comment import Comment
+from beem.exceptions import ContentDoesNotExistsException
 import random
-
 
 def comment_picker(request):
     if request.method == "POST":
         try:
             post = Comment(request.POST['post'])
             win_num = int(request.POST.get('winners'))
-        except beem.exceptions.ContentDoesNotExistsException:
+        except ContentDoesNotExistsException:
             return render(request, 'picker.html', {'error': 'Post does not exist!'})
         except ValueError:
             return render(request, 'picker.html', {'error': 'Wrong permlink format!'})
@@ -24,7 +23,8 @@ def comment_picker(request):
         replies = post.get_all_replies()
 
         if bots == "on":
-            bot_list = ['pizzabot', 'hivebuzz', 'ecency', 'luvshares', 'beerlover', 'tipu', 'pinmapple', 'holybread', 'risingstargame', 'wine.bot', 'actifit']
+            bot_list = ['pizzabot', 'hivebuzz', 'ecency', 'luvshares', 'beerlover', 'tipu', 'pinmapple', 'holybread', 'risingstargame', 'wine.bot', 'actifit', 'germanbot',
+            'threespeak', 'steem-ua', 'steem-plus', 'steemitboard', 'upvoteturtle', 'voinvote2', 'voinvote3', 'gangstalking']
             bot_list.append(author)
             replies = [[reply.author, reply.body] for reply in replies if word.lower() in reply.body.lower() and reply.author not in bot_list]
         else:
