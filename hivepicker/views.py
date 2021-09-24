@@ -17,7 +17,7 @@ def comment_picker(request):
         except KeyError:
             return render(request, 'picker.html', {'error': 'Something went wrong!'})
 
-        author = post.json()['author']
+        author = post.json().get('author', 'no_author')
         word = request.POST.get('demand')
         bots = request.POST.get('bots')
         replies = post.get_all_replies()
