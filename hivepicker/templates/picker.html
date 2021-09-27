@@ -50,11 +50,12 @@
     {% else %}
       <div class="card text-center" style="width: 35rem;">
         <div class="card-header">
-          {{ post.title }}
+          <a href="https://peakd.com/@{{ post.author }}/{{ post.permlink }}">{{ post.title }}</a>
         </div>
           {% for author, comment in winners %}
         <div class="card-body">
-          <h3 class="card-title">The winner is: {{ author }}!</h3>
+          <h3 class="card-title">The winner is: @{{ author }}!</h3>
+          <p><img src="https://images.hive.blog/u/{{ author }}/avatar"></p>
           <p class="card-text">{{ comment |safe }}</p>
         </div>
           {% endfor %}
