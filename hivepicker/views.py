@@ -9,13 +9,13 @@ def comment_picker(request):
             post = Comment(request.POST['post'])
             win_num = int(request.POST.get('winners'))
         except ContentDoesNotExistsException:
-            return render(request, 'picker.html', {'error': 'Post does not exist!'})
+            return render(request, 'picker/picker.html', {'error': 'Post does not exist!'})
         except ValueError:
-            return render(request, 'picker.html', {'error': 'Wrong permlink format!'})
+            return render(request, 'picker/picker.html', {'error': 'Wrong permlink format!'})
         except TypeError:
-            return render(request, 'picker.html', {'error': 'Number of winners is not an integer!'})
+            return render(request, 'picker/picker.html', {'error': 'Number of winners is not an integer!'})
         except KeyError:
-            return render(request, 'picker.html', {'error': 'Something went wrong!'})
+            return render(request, 'picker/picker.html', {'error': 'Something went wrong! Try again.'})
 
         author = post.json().get('author', 'no_author')
         word = request.POST.get('demand')
@@ -23,15 +23,17 @@ def comment_picker(request):
         replies = post.get_all_replies()
 
         if bots == "on":
-            bot_list = ['pizzabot', 'hivebuzz', 'ecency', 'luvshares', 'beerlover', 'tipu', 'pinmapple', 'holybread', 'risingstargame', 'wine.bot', 'actifit', 'germanbot',
-            'threespeak', 'steem-ua', 'steem-plus', 'steemitboard', 'upvoteturtle', 'voinvote2', 'voinvote3', 'gangstalking']
+            bot_list = ['actifit', 'beerlover', 'curation-cartel', 'discovery-it', 'ecency', 'gangstalking', 'germanbot', 'hivebuzz',
+                        'hivegifbot', 'holybread', 'india-leo', 'lolzbot', 'luvshares', 'pinmapple',
+                        'pizzabot', 'poshtoken', 'risingstargame', 'steem-plus', 'steem-ua', 'steemitboard', 'teamuksupport', 'threespeak', 'tipu',
+                        'upvoteturtle', 'voinvote2', 'voinvote3', 'wine.bot', 'youarealive', 'zottonetoken']
             bot_list.append(author)
             replies = [[reply.author, reply.body] for reply in replies if word.lower() in reply.body.lower() and reply.author not in bot_list]
         else:
             replies = [[reply.author, reply.body] for reply in replies if word.lower() in reply.body.lower() and reply.author != author]
         
         if not replies:
-            return render(request, 'picker.html', {'error': 'No valid comments :('})
+            return render(request, 'picker/picker.html', {'error': 'No valid comments :('})
         
         participants = set(author for author, body in replies)
         
@@ -39,15 +41,15 @@ def comment_picker(request):
             winner = [random.choice(replies)]
             participants.remove(winner[0][0])
             print(winner)
-            return render(request, 'picker.html', {'winners': winner, 'participants': participants, 'post': post})
+            return render(request, 'picker/picker.html', {'winners': winner, 'participants': participants, 'post': post})
         elif win_num > len(replies):
-            return render(request, 'picker.html', {'error': 'There is more winners than comments. Choose a smaller number of winners.'})
+            return render(request, 'picker/picker.html', {'error': 'There is more winners than comments. Choose a smaller number of winners.'})
         else:
             winners = random.sample(replies, win_num)
             print(winners)
             for winner in winners:
                 participants.remove(winner[0])
-            return render(request, 'picker.html', {'winners': winners, 'participants': participants, 'post': post})
+            return render(request, 'picker/picker.html', {'winners': winners, 'participants': participants, 'post': post})
 
     else:
-        return render(request, 'picker.html', {})
+        return render(request, 'picker/picker.html', {})
