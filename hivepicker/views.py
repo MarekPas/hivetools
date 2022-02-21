@@ -3,6 +3,7 @@ from beem.comment import Comment
 from beem.exceptions import ContentDoesNotExistsException
 import random
 
+
 def comment_picker(request):
     if request.method == "POST":
         try:
@@ -16,6 +17,8 @@ def comment_picker(request):
             return render(request, 'picker/picker.html', {'error': 'Number of winners is not an integer!'})
         except KeyError:
             return render(request, 'picker/picker.html', {'error': 'Something went wrong! Try again.'})
+        except TimeoutError:
+            return render(request, 'picker/picker.html', {'error': 'Timeout Error. Please, try again later.'})
 
         author = post.json().get('author', 'no_author')
         word = request.POST.get('demand')
@@ -53,3 +56,7 @@ def comment_picker(request):
 
     else:
         return render(request, 'picker/picker.html', {})
+
+
+def splinterlands(request):
+    pass
