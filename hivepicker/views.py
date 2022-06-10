@@ -27,7 +27,7 @@ def comment_picker(request):
 
         if bots == "on":
             bot_list = ['actifit', 'beerlover', 'curation-cartel', 'discovery-it', 'ecency', 'gangstalking', 'germanbot', 'hivebits', 'hivebuzz',
-                        'hivegifbot', 'holybread', 'india-leo', 'lolzbot', 'luvshares', 'pgm-curator', 'pinmapple',
+                        'hivegifbot', 'holybread', 'india-leo', 'lolzbot', 'luvshares', 'pgm-curator', 'pgmcuration', 'pinmapple',
                         'pizzabot', 'poshtoken', 'risingstargame', 'steem-plus', 'steem-ua', 'steemitboard', 'teamuksupport', 'threespeak', 'tipu',
                         'upvoteturtle', 'voinvote2', 'voinvote3', 'wine.bot', 'youarealive', 'zottonetoken']
             bot_list.append(author)
