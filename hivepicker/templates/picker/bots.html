@@ -1,0 +1,13 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Bot list</title>
+  </head>
+  <body>
+
+    {% for bot in bots %}
+        {{ bot }}<br>
+    {% endfor %}
+</body>
+</html>

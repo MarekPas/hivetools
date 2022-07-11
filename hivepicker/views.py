@@ -3,6 +3,10 @@ from beem.comment import Comment
 from beem.exceptions import ContentDoesNotExistsException
 import random
 
+bot_list = ['actifit', 'beerlover', 'curation-cartel', 'discovery-it', 'ecency', 'gangstalking', 'germanbot', 'hivebits', 'hivebuzz',
+                        'hivegifbot', 'holybread', 'india-leo', 'lolzbot', 'luvshares', 'meme.bot', 'pgm-curator', 'pgmcuration', 'pinmapple',
+                        'pizzabot', 'poshtoken', 'risingstargame', 'steem-plus', 'steem-ua', 'steemitboard', 'teamuksupport', 'threespeak', 'tipu',
+                        'upvoteturtle', 'wine.bot', 'youarealive', 'zottonetoken']
 
 def comment_picker(request):
     if request.method == "POST":
@@ -26,10 +30,6 @@ def comment_picker(request):
         replies = post.get_all_replies()
 
         if bots == "on":
-            bot_list = ['actifit', 'beerlover', 'curation-cartel', 'discovery-it', 'ecency', 'gangstalking', 'germanbot', 'hivebits', 'hivebuzz',
-                        'hivegifbot', 'holybread', 'india-leo', 'lolzbot', 'luvshares', 'pgm-curator', 'pgmcuration', 'pinmapple',
-                        'pizzabot', 'poshtoken', 'risingstargame', 'steem-plus', 'steem-ua', 'steemitboard', 'teamuksupport', 'threespeak', 'tipu',
-                        'upvoteturtle', 'voinvote2', 'voinvote3', 'wine.bot', 'youarealive', 'zottonetoken']
             bot_list.append(author)
             replies = [[reply.author, reply.body] for reply in replies if word.lower() in reply.body.lower() and reply.author not in bot_list]
         else:
@@ -43,13 +43,13 @@ def comment_picker(request):
         if win_num == 1:
             winner = [random.choice(replies)]
             participants.remove(winner[0][0])
-            print(winner)
+            print(post.title, winner)
             return render(request, 'picker/picker.html', {'winners': winner, 'participants': participants, 'post': post})
         elif win_num > len(replies):
             return render(request, 'picker/picker.html', {'error': 'There is more winners than comments. Choose a smaller number of winners.'})
         else:
             winners = random.sample(replies, win_num)
-            print(winners)
+            print(post.title, winners)
             for winner in winners:
                 participants.remove(winner[0])
             return render(request, 'picker/picker.html', {'winners': winners, 'participants': participants, 'post': post})
@@ -58,5 +58,5 @@ def comment_picker(request):
         return render(request, 'picker/picker.html', {})
 
 
-def splinterlands(request):
-    pass
+def bots(request):
+    return render(request, 'picker/bots.html', {'bots': bot_list})
