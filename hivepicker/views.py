@@ -3,10 +3,10 @@ from beem.comment import Comment
 from beem.exceptions import ContentDoesNotExistsException
 import random
 
-bot_list = ['actifit', 'beerlover', 'curation-cartel', 'discovery-it', 'ecency', 'gangstalking', 'germanbot', 'hivebits', 'hivebuzz',
-                        'hivegifbot', 'holybread', 'india-leo', 'lolzbot', 'luvshares', 'meme.bot', 'pgm-curator', 'pgmcuration', 'pinmapple',
+BOT_LIST = ('actifit', 'beerlover', 'curation-cartel', 'discovery-it', 'ecency', 'gangstalking', 'germanbot', 'hivebits', 'hivebuzz',
+                        'hivegifbot', 'holybread', 'india-leo', 'lolzbot', 'luvshares', 'meme.bot', 'monster-curator', 'pgm-curator', 'pgmcuration', 'pinmapple',
                         'pizzabot', 'poshtoken', 'risingstargame', 'steem-plus', 'steem-ua', 'steemitboard', 'teamuksupport', 'threespeak', 'tipu',
-                        'upvoteturtle', 'wine.bot', 'youarealive', 'zottonetoken']
+                        'upvoteturtle', 'wine.bot', 'youarealive', 'zottonetoken')
 
 def comment_picker(request):
     if request.method == "POST":
@@ -30,7 +30,7 @@ def comment_picker(request):
         replies = post.get_all_replies()
 
         if bots == "on":
-            bot_list.append(author)
+            bot_list = BOT_LIST + (author,)
             replies = [[reply.author, reply.body] for reply in replies if word.lower() in reply.body.lower() and reply.author not in bot_list]
         else:
             replies = [[reply.author, reply.body] for reply in replies if word.lower() in reply.body.lower() and reply.author != author]
@@ -59,4 +59,4 @@ def comment_picker(request):
 
 
 def bots(request):
-    return render(request, 'picker/bots.html', {'bots': bot_list})
+    return render(request, 'picker/bots.html', {'bots': BOT_LIST})
