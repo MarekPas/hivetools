@@ -52,13 +52,27 @@
         <div class="card-header">
           <a href="https://peakd.com/@{{ post.author }}/{{ post.permlink }}" target="_blank">{{ post.title }}</a>
         </div>
-          {% for author, comment in winners %}
-        <div class="card-body">
-          <h3 class="card-title">The winner is: @{{ author }}!</h3>
-          <p><img src="https://images.hive.blog/u/{{ author }}/avatar"></p>
-          <p class="card-text">{{ comment |safe }}</p>
-        </div>
-          {% endfor %}
+
+          {% if winners|length > 1 %}
+            <div class="card-body">
+              <h3 class="card-title">The winners are:</h3>
+              <h4>{{ names }}</h4>
+            </div>
+            {% for author, comment in winners %}
+            <div class="card-body">
+              <h5 class="card-title">@{{ author }}</h5>
+              <p><img src="https://images.hive.blog/u/{{ author }}/avatar"></p>
+              <p class="card-text">{{ comment |safe }}</p>
+            </div>
+            {% endfor %}
+          {% else %}
+          <div class="card-body">
+            <h3 class="card-title">The winner is: @{{ winners.0.0 }}!</h3>
+            <p><img src="https://images.hive.blog/u/{{ winners.0.0 }}/avatar"></p>
+            <p class="card-text">{{ winners.0.1 |safe }}</p>
+          </div>
+          {% endif %}
+
         <div class="card-footer text-muted" id="copy" >
           Other participants:
           {% for name in participants %}

@@ -5,7 +5,7 @@ import random
 
 BOT_LIST = ('actifit', 'beerlover', 'curation-cartel', 'discovery-it', 'ecency', 'gangstalking', 'germanbot', 'hivebits', 'hivebuzz',
                         'hivegifbot', 'holybread', 'india-leo', 'lolzbot', 'luvshares', 'meme.bot', 'monster-curator', 'pgm-curator', 'pgmcuration', 'pinmapple',
-                        'pizzabot', 'poshtoken', 'risingstargame', 'steem-plus', 'steem-ua', 'steemitboard', 'teamuksupport', 'threespeak', 'tipu',
+                        'pizzabot', 'poshtoken', 'risingstargame', 'steem-plus', 'steem-ua', 'steemitboard', 'stemsocial', 'teamuksupport', 'threespeak', 'tipu',
                         'upvoteturtle', 'wine.bot', 'youarealive', 'zottonetoken')
 
 def comment_picker(request):
@@ -52,7 +52,8 @@ def comment_picker(request):
             print(post.title, winners)
             for winner in winners:
                 participants.remove(winner[0])
-            return render(request, 'picker/picker.html', {'winners': winners, 'participants': participants, 'post': post})
+            names = "@" + ", @".join(n for n,m in winners)
+            return render(request, 'picker/picker.html', {'winners': winners, 'participants': participants, 'post': post, 'names': names})
 
     else:
         return render(request, 'picker/picker.html', {})
