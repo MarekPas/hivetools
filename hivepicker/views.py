@@ -3,10 +3,11 @@ from beem.comment import Comment
 from beem.exceptions import ContentDoesNotExistsException
 import random
 
-BOT_LIST = ('actifit', 'beerlover', 'curation-cartel', 'discovery-it', 'ecency', 'gangstalking', 'germanbot', 'hivebits', 'hivebuzz',
-                        'hivegifbot', 'holybread', 'india-leo', 'lolzbot', 'luvshares', 'meme.bot', 'monster-curator', 'pgm-curator', 'pgmcuration', 'pinmapple',
-                        'pizzabot', 'poshtoken', 'risingstargame', 'steem-plus', 'steem-ua', 'steemitboard', 'stemsocial', 'teamuksupport', 'threespeak', 'tipu',
-                        'upvoteturtle', 'wine.bot', 'youarealive', 'zottonetoken')
+BOT_LIST = ('actifit', 'bbhbot', 'beerlover', 'curation-cartel', 'discovery-it', 'ecency', 'gangstalking', 'germanbot',
+            'hivebits', 'hiq.smartbot', 'hivebuzz', 'hivegifbot', 'holybread', 'india-leo', 'indiaunited',
+            'lolzbot', 'luvshares', 'meme.bot', 'monster-curator', 'pgm-curator', 'pgmcuration', 'pinmapple',
+            'pizzabot', 'poshtoken', 'risingstargame', 'steem-plus', 'steem-ua', 'steemitboard', 'stemsocial',
+            'teamuksupport', 'threespeak', 'tipu', 'upvoteturtle', 'wine.bot', 'youarealive', 'zottonetoken')
 
 def comment_picker(request):
     if request.method == "POST":
