@@ -28,7 +28,7 @@ SECRET_KEY = os.environ.get('hivetools_SC')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get('DEBUG', False)
 
-ALLOWED_HOSTS = ['hivetools.herokuapp.com', '127.0.0.1', 'hivetools.up.railway.app']
+ALLOWED_HOSTS = ['hivetools.herokuapp.com', '127.0.0.1', 'hivetools.up.railway.app', 'hivetools.vercel.app']
 
 
 # Application definition
