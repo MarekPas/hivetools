@@ -1,7 +1,11 @@
 import math
 
-def get_int_reputation(reputation: float):
-    if reputation == 0:
-        return 0
-    else:
-        return int(math.log10((abs((reputation))-9)*9)+25)
+def get_int_reputation(rep: float):
+
+    if rep == 0:
+        return 25
+    score = max([math.log10(abs(rep)) - 9, 0])
+    if rep < 0:
+        score *= -1
+    score = (score * 9.0) + 25.0
+    return int(score)
