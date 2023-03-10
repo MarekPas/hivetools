@@ -41,7 +41,7 @@ def comment_picker(request):
             excluded = exclude_users + (author,)
             replies = [[reply.author, reply.body, get_int_reputation(reply.get('author_reputation'))] for reply in replies if word.lower() in reply.body.lower() and reply.author not in excluded]
 
-        replies = [r for r in replies if max_rep >= r[2] >= min_rep]   # removing comments with low reputation
+        replies = [r for r in replies if max_rep >= r[2] >= min_rep]   # removing comments with low/high reputation
 
         if followers == "on":
             f = Account(author).get_followers()
