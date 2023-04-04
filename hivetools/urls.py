@@ -24,4 +24,5 @@ urlpatterns = [
     path('', main_page, name="main-page"),
     path('picker/', include('hivepicker.urls')),
     path('mentions/', include('mentions.urls')),
+    path('answers/', include('answers.urls')),
 ]

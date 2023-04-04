@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'homepage',
     'hivepicker',
     'mentions',
+    'answers',
 ]
 
 MIDDLEWARE = [
