@@ -44,23 +44,40 @@
 
       <div class="form-row">
         <div class="form-group col-md-3">
-          <input class="form-check-input" type="checkbox"  id="followers" name="followers">
+          <input class="form-check-input" type="radio"  id="followers" name="followers" value="on">
           <label class="form-check-label" for="followers">Followers only</label>
         </div>
         <div>
+          <input class="form-check-input" type="radio"  id="followers+1" name="followers" value="+1">
+          <label class="form-check-label" for="followers">Followers +1 entry</label>
+        </div>
+        <div class="form-group col-md-3">
           <input class="form-check-input" type="checkbox"  id="exclude_bots" checked name="bots">
           <label class="form-check-label" for="exclude_bots">
-            Exclude&nbsp;<a href="{% url 'bots' %}" target="_blank">bots</a> |
-            <a class="text-left collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-              Add users to exclude manually
-            </a>
+            Exclude&nbsp;<a href="{% url 'bots' %}" target="_blank">bots</a>
           </label>
+        </div>
+          <div class="form-group col-md-3">
+            <label class="form-check-label" for="extra_options">
+            <a class="text-left collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+              Extra options
+            </a>
+            </label>
+          </div>
+
+        </div>
+      </div>
+
+      <div id="collapseAnswer" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+        <div>
+          <label class="form-check-label" for="answer">Only <a href="{% url 'encode-answer' %}">encoded answers</a> in replies will be considered correct. <a href="https://peakd.com/publish?draft=891aacad-23b0-4125-a4ac-e00b6a1922b2" target="_blank">Read tutorial</a>.</label>
+          <input class="form-control" id="answer" type="search" aria-label="answer" placeholder="add answer" name="answer">
         </div>
       </div>
 
       <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
           <div>
-            <input class="form-control" type="search" aria-label="exclude_users" placeholder="add users to be excluded, separated by commas (allowed with @)" name="exclude_users">
+            <input class="form-control" type="search" aria-label="exclude_users" placeholder="add users to be excluded, separated by commas (with or without @)" name="exclude_users">
           </div>
       </div>
 
@@ -108,12 +125,21 @@
           {% for name in participants %}
           @{{ name }},
           {% endfor %}
-          <br>
-          <button class="btn btn-light" data-toggle="popover" data-placement="bottom" data-content="Copied to clipboard!" onclick="copyDivToClipboard()">
-            Copy participants
-          </button>
-         
         </div>
+
+        {% if incorrect_answers %}
+        <div class="card-footer text-muted" id="copy" >
+          Incorrect answers:<br>
+          {% for name in incorrect_answers %}
+          @{{ name }},
+          {% endfor %}
+        </div>
+        {% endif %}
+
+        <button class="btn btn-light" data-toggle="popover" data-placement="bottom" data-content="Copied to clipboard!" onclick="copyDivToClipboard()">
+          Copy participants
+        </button>
+
       </div>
     {% endif %}
 {% endif %}
