@@ -1,8 +1,11 @@
 from django.shortcuts import render
+from beem import Hive
 from beem.comment import Comment, Account
 from beem.exceptions import ContentDoesNotExistsException
 import random
 from .commons import get_int_reputation, salt_password
+
+hive = Hive(node='https://api.deathwing.me')
 
 BOT_LIST = ('actifit', 'bbhbot', 'bdvoter.cur', 'beerlover', 'curation-cartel', 'discovery-it', 'ecency', 'germanbot',
             'hivebits', 'hiq.smartbot', 'hive-112281', 'hivebuzz', 'hivegifbot','hiq.smartbot', 'hk-gifts', 'holybread', 'india-leo', 'indiaunited',
@@ -10,10 +13,11 @@ BOT_LIST = ('actifit', 'bbhbot', 'bdvoter.cur', 'beerlover', 'curation-cartel', 
             'pizzabot', 'poshtoken', 'risingstargame', 'splinterboost', 'steem-plus', 'steem-ua', 'steemitboard', 'stemsocial',
             'teamuksupport', 'thepimpdistrict', 'threespeak', 'tipu', 'upvoteturtle', 'wine.bot', 'youarealive', 'xyz.store', 'zottonetoken')
 
+
 def comment_picker(request):
     if request.method == "POST":
         try:
-            post = Comment(request.POST['post'])
+            post = Comment(request.POST['post'], blockchain_instance=hive)
             win_num = int(request.POST.get('winners'))
             min_rep = int(request.POST.get('reputation_min'))
             max_rep = int(request.POST.get('reputation_max'))
