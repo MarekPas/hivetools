@@ -1,9 +1,11 @@
 # Description
 Website based on Django framework with tools for Hive blockchain.
-http://hivetools.up.railway.app/
+http://hivetools.up.railway.app/ or https://hivetools.onrender.com
 
 ### Apps
 * Hive random comment picker
+* Notification list manager
+* Answer encoder
 
 ## Technologies
 * Python 3.7
