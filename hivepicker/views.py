@@ -9,7 +9,7 @@ hive = Hive(node='https://api.deathwing.me')
 
 BOT_LIST = ('actifit', 'bbhbot', 'bdvoter.cur', 'beerlover', 'curation-cartel', 'discovery-it', 'ecency', 'germanbot',
             'hivebits', 'hiq.smartbot', 'hive-112281', 'hivebuzz', 'hivegifbot','hiq.smartbot', 'hk-gifts', 'holybread', 'india-leo', 'indiaunited',
-            'lolzbot', 'luvshares', 'meme.bot', 'monster-curator', 'pgm-curator', 'pgmcuration', 'pinmapple',
+            'lolzbot', 'lolz.pgm', 'luvshares', 'meme.bot', 'monster-curator', 'pgm-curator', 'pgmcuration', 'pinmapple',
             'pizzabot', 'poshtoken', 'risingstargame', 'splinterboost', 'steem-plus', 'steem-ua', 'steemitboard', 'stemsocial',
             'teamuksupport', 'thepimpdistrict', 'threespeak', 'tipu', 'upvoteturtle', 'wine.bot', 'youarealive', 'xyz.store', 'zottonetoken')
 
