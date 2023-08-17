@@ -23,6 +23,7 @@
       <div class="form-group">
         <input class="form-control" type="search" placeholder="Permlink" aria-label="Search" name="post">
       </div>
+
       <div class="form-row">
         <div class="form-group col-md-5">
           <label>Required word(s) (optional)</label>
@@ -57,29 +58,39 @@
             Exclude&nbsp;<a href="{% url 'bots' %}" target="_blank">bots</a>
           </label>
         </div>
-          <div class="form-group col-md-3">
-            <label class="form-check-label" for="extra_options">
-            <a class="text-left collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-              Extra options
-            </a>
-            </label>
-          </div>
-
+        <div class="form-group col-md-3">
+          <label class="form-check-label" for="extra_options">
+          <a class="text-left collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+            Extra options
+          </a>
+          </label>
         </div>
-      </div>
 
-      <div id="collapseAnswer" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
-        <div>
+      </div>
+      
+      <div id="collapseAnswer" class="collapse justify-content-center" aria-labelledby="headingTwo" data-parent="#accordionExample">
+
+        <div class="collapse">
           <label class="form-check-label" for="answer">Only <a href="{% url 'encode-answer' %}">encoded answers</a> in replies will be considered correct. <a href="https://peakd.com/hive-140217/@sentipl/hive-random-comment-picker-latest-updates" target="_blank">Read tutorial</a>.</label>
           <input class="form-control" id="answer" type="search" aria-label="answer" placeholder="add answer" name="answer">
         </div>
+
+        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+            <input class="form-control" type="search" aria-label="exclude_users" placeholder="add users to be excluded, separated by commas (with or without @)" name="exclude_users">
+        </div>
+        
+        <div class="form-group col-md-4">
+          <!-- <label for="inputState">Choose node</label> -->
+          <select id="inputState" class="form-control" name="node">
+            <option value="https://api.deathwing.me">Choose node</option>
+            {% for node in nodes %}
+            <option>{{ node }}</option>
+            {% endfor %}
+          </select>
+        </div>
+
       </div>
 
-      <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
-          <div>
-            <input class="form-control" type="search" aria-label="exclude_users" placeholder="add users to be excluded, separated by commas (with or without @)" name="exclude_users">
-          </div>
-      </div>
 
       <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Get a random winner</button>
     </form>
@@ -150,7 +161,10 @@
 <br/>
 <hr>
 <footer>
-  <div class="row justify-content-center">(c)&nbsp;<a href="https://peakd.com/@sentipl">sentipl</a>&nbsp;-&nbsp;<a href="https://github.com/MarekPas/hivetools/tree/github/hivepicker">Edit on GitHub</a></div>
+  <div class="row justify-content-center">
+    (c)&nbsp;<a href="https://peakd.com/@sentipl" target="_blank">sentipl</a>&nbsp;-&nbsp;
+    <a href="https://github.com/MarekPas/hivetools/tree/github/hivepicker" target="_blank">Edit on GitHub</a>&nbsp;-&nbsp;
+    <a href="https://www.buymeacoffee.com/sentipl" target="_blank">Buy me a pizza</a></div>
 </footer>
  
 <script>
