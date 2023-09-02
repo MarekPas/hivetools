@@ -7,11 +7,11 @@ from beem.nodelist import NodeList
 import random
 from .commons import get_int_reputation, salt_password
 
-BOT_LIST = ('actifit', 'bbhbot', 'bdvoter.cur', 'beerlover', 'curation-cartel', 'discovery-it', 'ecency', 'germanbot',
-            'hivebits', 'hiq.smartbot', 'hive-112281', 'hivebuzz', 'hivegifbot','hiq.smartbot', 'hk-gifts', 'holybread', 'hug.bot', 'india-leo', 'indiaunited',
+BOT_LIST = ('actifit', 'bbhbot', 'bdvoter.cur', 'beerlover', 'curation-cartel', 'dhedge', 'discovery-it', 'ecency', 'germanbot',
+            'hivebits', 'hiq.smartbot', 'hive-112281', 'hive-177745', 'hivebuzz', 'hivegifbot','hiq.smartbot', 'hk-gifts', 'holybread', 'hug.bot', 'india-leo', 'indiaunited',
             'lolzbot', 'lolz.pgm', 'luvshares', 'meme.bot', 'monster-curator', 'pgm-curator', 'pgmcuration', 'pinmapple',
             'pizzabot', 'poshtoken', 'risingstargame', 'splinterboost', 'steem-plus', 'steem-ua', 'steemitboard', 'stemsocial',
-            'teamuksupport', 'thepimpdistrict', 'threespeak', 'tipu', 'upvoteturtle', 'wine.bot', 'youarealive', 'xyz.store', 'zottonetoken')
+            'teamuksupport', 'thepimpdistrict', 'threespeak', 'tipu', 'upvoteturtle', 'visualblock', 'wine.bot', 'youarealive', 'xyz.store', 'zottonetoken')
 
 def get_nodelist():
     nodelist = NodeList()
