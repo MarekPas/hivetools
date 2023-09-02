@@ -1,0 +1,14 @@
+{
+    "builds": [
+      {
+        "src": "hivetools/wsgi.py",
+        "use": "@vercel/python"
+      }
+    ],
+    "routes": [
+      {
+        "src": "/(.*)",
+        "dest": "hivetools/wsgi.py"
+      }
+    ]
+}
