@@ -3,20 +3,27 @@ from beem import Hive
 from beem.comment import Comment, Account
 from beem.exceptions import ContentDoesNotExistsException
 from beemapi.exceptions import RPCError
-from beem.nodelist import NodeList
+# from beem.nodelist import NodeList
 import random
 from .commons import get_int_reputation, salt_password
 
-BOT_LIST = ('actifit', 'bbhbot', 'bdvoter.cur', 'beerlover', 'curation-cartel', 'discovery-it', 'ecency', 'germanbot',
+BOT_LIST = ('actifit', 'bbhbot', 'bdvoter.cur', 'beerlover', 'curation-cartel', 'dhedge', 'discovery-it', 'ecency', 'germanbot',
             'hivebits', 'hiq.smartbot', 'hive-112281', 'hivebuzz', 'hivegifbot','hiq.smartbot', 'hk-gifts', 'holybread', 'hug.bot', 'india-leo', 'indiaunited',
             'lolzbot', 'lolz.pgm', 'luvshares', 'meme.bot', 'monster-curator', 'pgm-curator', 'pgmcuration', 'pinmapple',
             'pizzabot', 'poshtoken', 'risingstargame', 'splinterboost', 'steem-plus', 'steem-ua', 'steemitboard', 'stemsocial',
-            'teamuksupport', 'thepimpdistrict', 'threespeak', 'tipu', 'upvoteturtle', 'wine.bot', 'youarealive', 'xyz.store', 'zottonetoken')
+            'terraboost', 'teamuksupport', 'thepimpdistrict', 'threespeak', 'tipu', 'upvoteturtle', 'wine.bot', 'youarealive', 'xyz.store', 'zottonetoken')
 
 def get_nodelist():
-    nodelist = NodeList()
-    nodelist.update_nodes()
-    nodes = nodelist.get_hive_nodes()
+    # nodelist = NodeList()
+    # nodelist.update_nodes()
+    # nodes = nodelist.get_hive_nodes()
+    nodes = ['https://api.c0ff33a.uk',
+            'https://rpc.ausbit.dev',
+            'https://api.deathwing.me',
+            'https://hived.emre.sh',
+            'https://anyx.io',
+            'https://techcoderx.com',
+            'https://hive.roelandp.nl']
     return nodes
 
 def comment_picker(request):
