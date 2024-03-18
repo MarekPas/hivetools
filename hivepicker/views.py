@@ -18,12 +18,12 @@ def get_nodelist():
     nodelist.update_nodes()
     nodes = nodelist.get_hive_nodes()
     # nodes = ['https://api.c0ff33a.uk',
-            # 'https://rpc.ausbit.dev',
-            # 'https://api.deathwing.me',
-            # 'https://hived.emre.sh',
-            # 'https://anyx.io',
-            # 'https://techcoderx.com',
-            # 'https://hive.roelandp.nl']
+    #         'https://rpc.ausbit.dev',
+    #         'https://api.deathwing.me',
+    #         'https://hived.emre.sh',
+    #         'https://anyx.io',
+    #         'https://techcoderx.com',
+    #         'https://hive.roelandp.nl']
     return nodes
 
 def comment_picker(request):
@@ -40,7 +40,7 @@ def comment_picker(request):
             max_rep = int(request.POST.get('reputation_max'))
             replies = post.get_all_replies()
         except RPCError:
-            return render(request, 'picker/picker.html', {'error': 'RPCError', 'nodes': nodes})
+            return render(request, 'picker/picker.html', {'error': 'RPCError. Try to change the node in extra options', 'nodes': nodes})
         except ContentDoesNotExistsException:
             return render(request, 'picker/picker.html', {'error': 'Post does not exist!', 'nodes': nodes})
         except ValueError:
