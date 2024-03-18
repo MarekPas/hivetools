@@ -18,12 +18,12 @@ def get_nodelist():
     nodelist.update_nodes()
     nodes = nodelist.get_hive_nodes()
     # nodes = ['https://api.c0ff33a.uk',
-            'https://rpc.ausbit.dev',
-            'https://api.deathwing.me',
-            'https://hived.emre.sh',
-            'https://anyx.io',
-            'https://techcoderx.com',
-            'https://hive.roelandp.nl']
+            # 'https://rpc.ausbit.dev',
+            # 'https://api.deathwing.me',
+            # 'https://hived.emre.sh',
+            # 'https://anyx.io',
+            # 'https://techcoderx.com',
+            # 'https://hive.roelandp.nl']
     return nodes
 
 def comment_picker(request):
