@@ -3,7 +3,7 @@ from beem import Hive
 from beem.comment import Comment, Account
 from beem.exceptions import ContentDoesNotExistsException
 from beemapi.exceptions import RPCError
-# from beem.nodelist import NodeList
+from beem.nodelist import NodeList
 import random
 from .commons import get_int_reputation, salt_password
 
