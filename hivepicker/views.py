@@ -14,9 +14,9 @@ BOT_LIST = ('actifit', 'bbhbot', 'bdvoter.cur', 'beerlover', 'curation-cartel', 
             'terraboost', 'teamuksupport', 'thepimpdistrict', 'threespeak', 'tipu', 'upvoteturtle', 'wine.bot', 'youarealive', 'xyz.store', 'zottonetoken')
 
 def get_nodelist():
-    # nodelist = NodeList()
-    # nodelist.update_nodes()
-    # nodes = nodelist.get_hive_nodes()
+    nodelist = NodeList()
+    nodelist.update_nodes()
+    nodes = nodelist.get_hive_nodes()
     nodes = ['https://api.c0ff33a.uk',
             'https://rpc.ausbit.dev',
             'https://api.deathwing.me',
